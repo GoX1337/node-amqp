@@ -1,0 +1,24 @@
+{
+  "name": "node-amqp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoX1337/node-amqp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GoX1337/node-amqp/issues"
+  },
+  "homepage": "https://github.com/GoX1337/node-amqp#readme",
+  "dependencies": {
+    "amqplib": "^0.5.6",
+    "dotenv": "^8.2.0"
+  }
+}
