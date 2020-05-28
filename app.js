@@ -11,21 +11,18 @@ let connect = async () => {
         console.error("[AMQP] close");
     });
 
-    sendMsg(conn, "queue_1", "hey", 1000);
-    sendMsg(conn, "queue_2", "kek", 500);
-    sendMsg(conn, "queue_3", "lulz", 1500);
+    sendMsg(conn, "queue_1", "hi", 2000);
 }
 
 let sendMsg = async (conn, queueName, msg, delay) => {
-    let channel;
     try {
-        channel = await conn.createChannel();
+        let channel = await conn.createChannel();
         await channel.assertQueue(queueName);
         let i = 0;
         setInterval(() => {
             let payload = Buffer.from(++i + " "  + msg + "_" + new Date().toISOString());
             channel.sendToQueue(queueName, payload);
-            console.log(`[AMQP] send message: '${payload}' to channel ${queueName}`);
+            console.log(`[AMQP] send message: '${payload}' to queue ${queueName}`);
         }, delay);
     }
     catch (e) {
@@ -33,12 +30,12 @@ let sendMsg = async (conn, queueName, msg, delay) => {
     }
     finally {
         setTimeout(() => {
-            close(conn, channel);
-        }, 10000);
+            close(conn);
+        }, 10000); 
     }
 }
 
-let close = (conn, channel) => {
+let close = (conn) => {
     conn.close();
     console.log("[AMQP] close connection");
     process.exit(0);
