@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/GoX1337/node-amqp#readme",
   "dependencies": {
-    "amqplib": "^0.5.6",
+    "amqplib": "^0.10.3",
     "dotenv": "^8.2.0"
   }
 }
